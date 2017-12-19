@@ -1,0 +1,51 @@
+<h2>Application Dashboard</h2>
+<div class="table-responsive">
+    
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Application</th>
+        <th>ITG</th>
+        <th>CAT</th>
+        <th>PROD</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let app of applications">
+        <td>
+          <a class="nav-link" href="#" routerLink="/application-detail">{{app.applicationName}}</a>
+        </td>
+        <td><a href="#" class="link" (click)="testLink(app,'itg')"><i class="fa fa-ellipsis-h" *ngIf="app.statusCode['itg'] != '200'"></i></a>
+          <a (click)="setAppInfo(app,'itg')" data-toggle="modal" data-target=".bd-example-modal-lg"><i [ngClass]="{'fa fa-check':app.statusCode['itg']=='200'}">
+            <div class="tooltip">
+              <span class="tooltiptext">{{app.itgLink}}</span>
+            </div>
+          </i></a>
+        </td>
+        <td><a href="#" class="link" (click)="testLink(app,'cat')"><i class="fa fa-ellipsis-h" *ngIf="app.statusCode['cat'] != '200'"></i></a>
+          <i [ngClass]="{'fa fa-check':app.statusCode['cat']=='200'}"></i>
+        </td>
+        <td><a href="#" class="link" (click)="testLink(app,'prd')"><i class="fa fa-ellipsis-h" *ngIf="app.statusCode['prd'] != '200'"></i></a>
+          <i [ngClass]="{'fa fa-check':app.statusCode['prd']=='200'}"></i>
+        </td>
+        <td></td>
+      </tr>
+    </tbody>
+</table>
+
+    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+          <div class="modal-body">
+          <b>{{applicationInfo.name}}</b>
+          <p>{{applicationInfo.url}}</p>
+          <p>{{applicationInfo.status}}</p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+</div>

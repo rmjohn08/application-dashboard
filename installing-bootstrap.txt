@@ -1,0 +1,2 @@
+C:\vscode_workspace\services-dashboard>npm install --save bootstrap@4.0.0-beta p
+opper.js jquery font-awesome
